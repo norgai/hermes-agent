@@ -182,6 +182,19 @@ PROVIDER_REGISTRY: Dict[str, ProviderConfig] = {
         api_key_env_vars=("LM_API_KEY",),
         base_url_env_var="LM_BASE_URL",
     ),
+    # Manifest is the LLM router companion to PR #18107's HermesOverlay
+    # entry. The overlay alone is not enough — the auth resolver checks
+    # PROVIDER_REGISTRY and refuses to dispatch to providers that aren't
+    # listed here. Defaults match Manifest's hosted endpoint; self-hosted
+    # users override via MANIFEST_BASE_URL.
+    "manifest": ProviderConfig(
+        id="manifest",
+        name="Manifest LLM Router",
+        auth_type="api_key",
+        inference_base_url="https://app.manifest.build/v1",
+        api_key_env_vars=("MANIFEST_API_KEY",),
+        base_url_env_var="MANIFEST_BASE_URL",
+    ),
     "copilot": ProviderConfig(
         id="copilot",
         name="GitHub Copilot",
