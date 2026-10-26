@@ -1,0 +1,5 @@
+name: manifest-provider
+kind: model-provider
+version: 1.0.0
+description: Manifest LLM router
+author: NORG
